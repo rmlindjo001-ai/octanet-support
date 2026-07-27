@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>grubuk.OCTANET | Portal Pelanggan</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#07101e;
+color:white;
+overflow-x:hidden;
+
+}
+
+/* ========================= */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:#1d4ed8;
+
+filter:blur(180px);
+
+top:-180px;
+left:-180px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+width:450px;
+height:450px;
+
+background:#06b6d4;
+
+filter:blur(180px);
+
+right:-150px;
+bottom:-180px;
+
+opacity:.25;
+
+z-index:-2;
+
+}
+
+/* ========================= */
+
+header{
+
+padding:25px 8%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+position:sticky;
+top:0;
+
+backdrop-filter:blur(18px);
+
+background:rgba(7,16,30,.55);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:100;
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:700;
+
+letter-spacing:1px;
+
+}
+
+.logo span{
+
+color:#38bdf8;
+
+}
+
+.menu{
+
+display:flex;
+gap:25px;
+
+}
+
+.menu a{
+
+color:white;
+text-decoration:none;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+color:#38bdf8;
+
+}
+
+/* ========================= */
+
+.hero{
+
+padding:80px 8% 40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:50px;
+flex-wrap:wrap;
+
+}
+
+.left{
+
+flex:1;
+min-width:320px;
+
+}
+
+.left h1{
+
+font-size:55px;
+line-height:1.1;
+margin-bottom:20px;
+
+}
+
+.left h1 span{
+
+color:#38bdf8;
+
+}
+
+.left p{
+
+opacity:.85;
+
+line-height:1.9;
+
+margin-bottom:35px;
+
+}
+
+.button{
+
+display:inline-flex;
+align-items:center;
+gap:12px;
+
+padding:15px 28px;
+
+background:#2563eb;
+
+border-radius:50px;
+
+text-decoration:none;
+
+color:white;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.button:hover{
+
+transform:translateY(-5px);
+
+background:#3b82f6;
+
+}
+
+/* ========================= */
+
+.right{
+
+flex:1;
+
+min-width:300px;
+
+display:flex;
+justify-content:center;
+
+}
+
+.panel{
+
+width:100%;
+max-width:420px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(30px);
+
+padding:30px;
+
+border-radius:28px;
+
+box-shadow:0 30px 80px rgba(0,0,0,.25);
+
+}
+
+.panel h3{
+
+margin-bottom:20px;
+
+}
+
+.status{
+
+background:#22c55e22;
+
+border:1px solid #22c55e55;
+
+padding:18px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.status i{
+
+font-size:40px;
+color:#22c55e;
+
+}
+
+.status div{
+
+line-height:1.6;
+
+}
+
+.status strong{
+
+display:block;
+font-size:18px;
+
+}
+
+/* ========================= */
+
+.quick{
+
+padding:40px 8%;
+
+}
+
+.title{
+
+font-size:34px;
+
+margin-bottom:35px;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border-radius:24px;
+
+padding:35px;
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+border-color:#38bdf8;
+
+box-shadow:0 20px 60px rgba(56,189,248,.25);
+
+}
+
+.card i{
+
+font-size:45px;
+
+margin-bottom:20px;
+
+color:#38bdf8;
+
+}
+
+.card h2{
+
+font-size:22px;
+
+margin-bottom:10px;
+
+}
+
+.card p{
+
+opacity:.8;
+
+line-height:1.8;
+
+font-size:14px;
+
+}
+
+/* ========================= */
+
+.info{
+
+padding:70px 8%;
+
+}
+
+.box{
+
+background:rgba(255,255,255,.05);
+
+padding:35px;
+
+border-radius:25px;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.box h2{
+
+margin-bottom:15px;
+
+}
+
+.box p{
+
+opacity:.85;
+
+line-height:1.9;
+
+}
+
+/* ========================= */
+
+footer{
+
+margin-top:80px;
+
+padding:30px;
+
+text-align:center;
+
+background:#050c16;
+
+font-size:14px;
+
+opacity:.8;
+
+}
+
+/* ========================= */
+
+@media(max-width:900px){
+
+.menu{
+
+display:none;
+
+}
+
+.left h1{
+
+font-size:42px;
+
+}
+
+.hero{
+
+padding-top:50px;
+
+}
+
+}
+
+</style>
+
+
+<style>
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none}
+.overlay.show{display:block}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0f172a;color:#fff;padding:24px;border-radius:16px;width:min(90%,500px);display:none;z-index:1001}
+.modal.show{display:block}
+.modal input,.modal textarea,.modal select{width:100%;margin:8px 0;padding:10px}
+</style>
+
+</head>
+
+  
+<body>
+
+<header>
+
+<div class="logo">
+
+grubuk.<span>OCTANET</span>
+
+</div>
+
+<div class="menu">
+
+<a href="#">Beranda</a>
+<a href="#">Gangguan</a>
+<a href="#">Pembayaran</a>
+<a href="#">Kontak</a>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="left">
+
+<h1>
+
+portal <span>grubyuk.OCTANET</span>
+
+</h1>
+
+<p>
+
+Selamat datang di Portal Pelanggan grubyuk.OCTANET.
+
+Laporkan gangguan internet, konfirmasi pembayaran,
+atau hubungi admin hanya dalam beberapa klik.
+
+</p>
+
+<a class="button"
+href="https://wa.me/6285730870911"
+target="_blank">
+
+<i class="fa-solid fa-headset"></i>
+
+Mulai Sekarang
+
+</a>
+
+</div>
+
+<div class="right">
+
+<div class="panel">
+
+<h3>Status Jaringan</h3>
+
+<div class="status">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<div>
+
+<strong>Semua Wilayah Normal</strong>
+
+Update terakhir
+5 menit yang lalu
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="quick">
+
+<h2 class="title">
+
+Layanan Cepat
+
+</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openGangguan()">
+
+<i class="fa-solid fa-wifi"></i>
+
+<h2>Gangguan</h2>
+
+<p>
+
+Laporkan internet putus atau lambat.
+
+</p>
+
+</div>
+
+<div class="card" onclick="alert('Fitur pembayaran segera hadir')">
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+<h2>Pembayaran</h2>
+
+<p>
+
+Upload bukti transfer tagihan.
+
+</p>
+
+</div>
+
+<div class="card" onclick="alert('Fitur teknisi segera hadir')">
+
+<i class="fa-solid fa-screwdriver-wrench"></i>
+
+<h2>Teknisi</h2>
+
+<p>
+
+Ajukan kunjungan teknisi.
+
+</p>
+
+</div>
+
+<div class="card" onclick="window.open('https://wa.me/6285730870911','_blank')">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<h2>WhatsApp</h2>
+
+<p>
+
+Chat langsung dengan admin.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="info">
+
+<div class="box">
+
+<h2>
+
+📢 Pengumuman
+
+</h2>
+
+<p>
+
+Saat ini seluruh jaringan berjalan normal.
+
+Jika terjadi maintenance atau gangguan,
+informasi akan ditampilkan pada halaman ini.
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 grubyuk OCTANET • Portal Pelanggan
+
+</footer>
+
+
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div class="modal" id="gangguanModal">
+<h2>Lapor Gangguan</h2>
+<input placeholder="Nama">
+<input placeholder="WhatsApp">
+<textarea placeholder="Keluhan"></textarea>
+<button onclick="submitGangguan()">Kirim</button>
+</div>
+<script>
+const ov=document.getElementById('overlay'),md=document.getElementById('gangguanModal');
+function openGangguan(){ov.classList.add('show');md.classList.add('show')}
+function closeModal(){ov.classList.remove('show');md.classList.remove('show')}
+function submitGangguan(){alert('Laporan berhasil dikirim');closeModal();}
+</script>
+
+</body>
+</html>
