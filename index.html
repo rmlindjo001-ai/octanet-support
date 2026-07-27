@@ -645,18 +645,53 @@ informasi akan ditampilkan pada halaman ini.
 
 
 <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
 <div class="modal" id="gangguanModal">
+
 <h2>Lapor Gangguan</h2>
-<input placeholder="Nama">
-<input placeholder="WhatsApp">
-<textarea placeholder="Keluhan"></textarea>
-<button onclick="submitGangguan()">Kirim</button>
+
+<input id="nama" type="text" placeholder="Nama Pelanggan">
+
+<input id="wa" type="text" placeholder="Nomor WhatsApp">
+
+<textarea id="keluhan" placeholder="Tuliskan Keluhan"></textarea>
+
+<button class="submit-btn" type="button" onclick="kirimWA()">
+
+<i class="fa-brands fa-whatsapp"></i>
+Kirim ke WhatsApp
+
+</button>
+
 </div>
 <script>
 const ov=document.getElementById('overlay'),md=document.getElementById('gangguanModal');
 function openGangguan(){ov.classList.add('show');md.classList.add('show')}
 function closeModal(){ov.classList.remove('show');md.classList.remove('show')}
 function submitGangguan(){alert('Laporan berhasil dikirim');closeModal();}
+function kirimWA(){
+
+const nama=document.getElementById("nama").value;
+
+const wa=document.getElementById("wa").value;
+
+const keluhan=document.getElementById("keluhan").value;
+
+const pesan=
+`Halo Admin MLINDJO NET
+
+📶 *LAPORAN GANGGUAN*
+
+👤 Nama : ${nama}
+📱 WA : ${wa}
+📝 Keluhan : ${keluhan}`;
+
+window.open(
+"https://wa.me/6285730870911?text="+encodeURIComponent(pesan),
+"_blank"
+);
+
+}
 </script>
 
 </body>
