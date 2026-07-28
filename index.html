@@ -427,13 +427,63 @@ opacity:.8;
 
 }
 
+.menu-toggle{
+
+display:none;
+
+font-size:28px;
+
+cursor:pointer;
+
+color:#fff;
+
+}
+
 /* ========================= */
 
 @media(max-width:900px){
 
 .menu{
 
+position:absolute;
+
+top:85px;
+
+left:0;
+
+width:100%;
+
+background:#0f172a;
+
 display:none;
+
+flex-direction:column;
+
+padding:20px 0;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.menu a{
+
+padding:15px;
+
+display:block;
+
+}
+
+.menu.show{
+
+display:flex;
+
+}
+
+.menu-toggle{
+
+display:block;
 
 }
 
@@ -567,7 +617,77 @@ font-weight:700;
 color:#38bdf8;
 
 }
+.submit-btn{
 
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.submit-btn:hover{
+
+background:#3b82f6;
+
+}
+  .modal h2{
+
+margin-bottom:20px;
+
+font-size:24px;
+
+}
+
+.modal input,
+.modal textarea{
+
+background:#162033;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:12px;
+
+color:white;
+
+padding:14px;
+
+margin-bottom:15px;
+
+outline:none;
+
+}
+
+.modal textarea{
+
+height:130px;
+
+resize:none;
+
+}
+
+.modal input:focus,
+.modal textarea:focus{
+
+border-color:#38bdf8;
+
+box-shadow:0 0 12px rgba(56,189,248,.35);
+
+background:#1a2740;
+
+}
+
+.modal input::placeholder,
+.modal textarea::placeholder{
+
+color:#94a3b8;
+
+}
+}
+  
 </style>
 
 </head>
@@ -577,20 +697,22 @@ color:#38bdf8;
 
 <header>
 
-<div class="logo">
+    <div class="logo">
+        Grubyuk.<span>OCTANET</span>
+    </div>
 
-Grubyuk.<span>OCTANET</span>
+    <div class="menu" id="menu">
 
-</div>
+        <a href="#">Beranda</a>
+        <a href="#">Gangguan</a>
+        <a href="#">Pembayaran</a>
+        <a href="#">Kontak</a>
 
-<div class="menu">
+    </div>
 
-<a href="#">Beranda</a>
-<a href="#">Gangguan</a>
-<a href="#">Pembayaran</a>
-<a href="#">Kontak</a>
-
-</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span id="icon">☰</span>
+    </div>
 
 </header>
 
@@ -719,51 +841,20 @@ Chat langsung dengan admin.
 </div>
 
 </div>
-
+  
 </section>
-
-  <section class="speedtest">
-
+  
+<section class="speedtest">
 <h2 class="title">
 <i class="fa-solid fa-gauge-high"></i>
 Test Kecepatan Internet
 </h2>
-
-<div class="speed-card">
-
-<div class="speed-circle">
-
-<div id="speedValue">0</div>
-
-<span>Mbps</span>
-
-</div>
-
-<div class="speed-result">
-
-<div class="item">
-<h3>⬇ Download</h3>
-<p id="download">0 Mbps</p>
-</div>
-
-<div class="item">
-<h3>⬆ Upload</h3>
-<p id="upload">0 Mbps</p>
-</div>
-
-<div class="item">
-<h3> 🛜 Ping</h3>
-<p id="ping">0 ms</p>
-</div>
-
-</div>
-
-<button class="button" onclick="startSpeedTest()">
-<i class="fa-solid fa-play"></i>
-Mulai Test
-</button>
-
-</div>
+  
+<iframe
+src="https://openspeedtest.com/speedtest"
+loading="lazy"
+  style="width:100%;height:700px;border:none;">
+</iframe>
 
 </section>
 
@@ -844,44 +935,28 @@ window.open(
 "_blank"
 );
 
+  const menu = document.getElementById("menu");
+const icon = document.getElementById("icon");
+const hamburger = document.querySelector(".menu-toggle");
+
+function toggleMenu() {
+    menu.classList.toggle("show");
+
+    if (menu.classList.contains("show")) {
+        icon.innerHTML = "✕";
+    } else {
+        icon.innerHTML = "☰";
+    }
 }
 
-  function startSpeedTest(){
+// Tutup menu jika klik di luar menu
+document.addEventListener("click", function(e) {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove("show");
+        icon.innerHTML = "☰";
+    }
+  }
 
-let speed=0;
-
-const meter=document.getElementById("speedValue");
-
-const down=document.getElementById("download");
-
-const up=document.getElementById("upload");
-
-const ping=document.getElementById("ping");
-
-const interval=setInterval(function(){
-
-speed+=3;
-
-meter.innerHTML=speed;
-
-if(speed>=96){
-
-clearInterval(interval);
-
-meter.innerHTML="100 Mbps";
-
-down.innerHTML="100 Mbps";
-
-up.innerHTML="100 Mbps";
-
-ping.innerHTML="2 ms";
-
-}
-
-},40);
-
-}
-  
 </script>
 
 </body>
