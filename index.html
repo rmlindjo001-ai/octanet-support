@@ -701,7 +701,7 @@ color:#94a3b8;
         Grubyuk.<span>OCTANET</span>
     </div>
 
-    <div class="menu" id="menu">
+  <div class="menu" id="menu">
 
         <a href="#">Beranda</a>
         <a href="#">Gangguan</a>
@@ -934,28 +934,34 @@ window.open(
 "https://wa.me/6285730870911?text="+encodeURIComponent(pesan),
 "_blank"
 );
-
+  
+}
   const menu = document.getElementById("menu");
 const icon = document.getElementById("icon");
 const hamburger = document.querySelector(".menu-toggle");
 
 function toggleMenu() {
+
     menu.classList.toggle("show");
 
-    if (menu.classList.contains("show")) {
+    if(menu.classList.contains("show")){
         icon.innerHTML = "✕";
-    } else {
+    }else{
         icon.innerHTML = "☰";
     }
+
 }
 
-// Tutup menu jika klik di luar menu
-document.addEventListener("click", function(e) {
-    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+document.addEventListener("click", function(e){
+
+    if(!menu.contains(e.target) && !hamburger.contains(e.target)){
+
         menu.classList.remove("show");
         icon.innerHTML = "☰";
+
     }
-  }
+
+});
 
 </script>
 
